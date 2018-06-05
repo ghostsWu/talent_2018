@@ -1,0 +1,779 @@
+// 滚动指示
+@scroll_icon_size:12px;
+@scroll_icon_duration:4s;
+
+// 插画尺寸
+@ill_size_s:280px;
+@ill_size_m:320px;
+@ill_size_l:500px;
+
+@industry_duration:2s;
+@ladder_duration:4s;
+@mac_duration:4s;
+
+@office_duration:2s;
+@free_duration:2s;
+
+@salaries_duration:2s;
+@signal_duration:.3s;
+
+
+
+
+.scroll_icon
+{
+    filter: contrast(3);
+
+    .dot
+    {
+        animation-name: scroll_icon;
+        animation-duration: @scroll_icon_duration;
+        // animation-direction: alternate;
+        animation-play-state: running;
+        animation-timing-function: linear;
+        // animation-delay: 2s;
+        animation-iteration-count: infinite;
+
+        animation-fill-mode: backwards;
+        filter: blur(3px);
+    }
+
+    .dot:nth-child(1)
+    {
+        animation-delay: 0 ;
+    }
+
+    .dot:nth-child(2)
+    {
+        animation-delay: @scroll_icon_duration / 4 ;
+    }
+
+    .dot:nth-child(3)
+    {
+        animation-delay: (@scroll_icon_duration / 2)  ;
+    }
+
+    .dot:nth-child(4)
+    {
+        animation-delay: (@scroll_icon_duration / 4) * 3 ;
+    }
+}
+
+@keyframes scroll_icon
+{
+    0%
+    {
+        transform: translate(0px,(0-@scroll_icon_size *1.8) ) scale(.4,.4);
+    }
+    33.333%
+    {
+        transform: translate(0px,0px ) scale(1,1);
+    }
+    48%
+    {
+        transform: translate(0px,0px ) scale(.5,.5);
+    }
+    100%
+    {
+        transform: translate(0px,(0-@scroll_icon_size *1.8) ) scale(.4,.4);
+    }
+}
+
+
+.fp-viewing-industry
+{
+    .illustration
+    {
+        .industry
+        {
+            .hand img
+            {
+                animation-name: industry_hand;
+                animation-duration: @industry_duration;
+                // animation-direction: alternate;
+                animation-play-state: running;
+                animation-timing-function: linear;
+                // animation-delay: 2s;
+                animation-iteration-count: infinite;
+
+                // animation-fill-mode : backwards;
+            }
+
+            .click img
+            {
+                animation-name: industry_click;
+                animation-duration: @industry_duration;
+                // animation-direction: alternate;
+                animation-play-state: running;
+                animation-timing-function: linear;
+                // animation-delay: 2s;
+                animation-iteration-count: infinite;
+
+                // animation-fill-mode : backwards;
+            }
+
+            .cruise img,
+            .hotel img,
+            .travel img
+            {
+                animation-name: industry_scene;
+                animation-duration: @industry_duration * 3;
+                // animation-direction: alternate;
+                animation-play-state: running;
+                animation-timing-function: cubic-bezier(.68,-.08, .4, 1.13);
+                // animation-delay: 2s;
+                animation-iteration-count: infinite;
+
+                animation-fill-mode: both ;
+            }
+
+            .travel img
+            {
+                animation-delay: 0s;
+            }
+            .hotel img
+            {
+                animation-delay: @industry_duration * 1;
+            }
+            .cruise img
+            {
+                animation-delay: @industry_duration * 2;
+            }
+        }
+    }
+}
+
+
+@keyframes industry_hand
+{
+    0%
+    {
+        transform: scale(1,1);
+    }
+    80%
+    {
+        transform: scale(1,1);
+    }
+    90%
+    {
+        transform: scale(1.05,1);
+    }
+    100%
+    {
+        transform: scale(1,1);
+    }
+}
+
+@keyframes industry_click
+{
+    0%
+    {
+        transform: scale(0,0);
+    }
+    80%
+    {
+        transform: scale(0,0);
+    }
+    82%
+    {
+        transform: scale(1,1);
+    }
+    97%
+    {
+        transform: scale(1,1);
+    }
+    100%
+    {
+        transform: scale(0,0);
+    }
+}
+
+
+@keyframes industry_scene
+{
+    0%
+    {
+        transform: translate3d(0%, -100%, 0px);
+
+        opacity: 0;
+    }
+    33%
+    {
+        transform: translate3d(0%, -100%, 0px);
+
+        opacity: 0;
+    }
+    40%
+    {
+        transform: translate3d(0%, 0%, 0px);
+
+        opacity: 1;
+    }
+    66%
+    {
+        transform: translate3d(0%, 0%, 0px);
+
+        opacity: 1;
+    }
+    77%
+    {
+        transform: translate3d(0%, 100%, 0px);
+
+        opacity: 0;
+    }
+    100%
+    {
+        transform: translate3d(0%, 100%, 0px);
+
+        opacity: 0;
+    }
+}
+
+
+.fp-viewing-customer
+{
+    .illustration
+    {
+        .customer
+        {
+            .ladder1,
+            .ladder2,
+            .ladder3,
+            .peop
+            {
+                animation-name: ladder;
+                animation-duration: @ladder_duration;
+                // animation-direction: alternate;
+                animation-play-state: running;
+                animation-timing-function: ease-in-out;
+                // animation-delay: 2s;
+                animation-iteration-count: infinite;
+
+                animation-fill-mode: both;
+            }
+
+            .ladder1
+            {
+                animation-delay: @ladder_duration / 6 * 0;
+            }
+            .ladder2,
+            .peop
+            {
+                animation-delay: @ladder_duration / 6 * 1;
+            }
+            .ladder3
+            {
+                animation-delay: @ladder_duration / 6 * 2;
+            }
+        }
+    }
+}
+
+
+.fp-viewing-technology{
+	.illustration{
+		.technology{
+			.box:after{
+				display: block;
+				content: "";
+				position: absolute;
+				left: 49%;
+				top: 62%;
+				width: 2%;
+				height: 2%;
+				background-color: #fff;
+
+				animation-name: signal;
+                animation-duration: @signal_duration * 2;
+                // animation-direction: alternate;
+                animation-play-state: running;
+                animation-timing-function: linear;
+                // animation-delay: 2s;
+                animation-iteration-count: infinite;
+
+                animation-fill-mode: both;
+			}
+
+			.box:nth-child(1):after{animation-delay: @signal_duration *2}
+			.box:nth-child(2):after{animation-delay: @signal_duration}
+			.box:nth-child(3):after{animation-delay: 0s}
+			.box:nth-child(4):after{animation-delay: .1s}
+			.box:nth-child(5):after{animation-delay: 0s}
+			.box:nth-child(6):after{animation-delay: @signal_duration}
+			.box:nth-child(7):after{animation-delay: .1s}
+			.box:nth-child(8):after{animation-delay: @signal_duration*2}
+			.box:nth-child(9):after{animation-delay: .3s}
+			.box:nth-child(10):after{animation-delay: 0s}
+			.box:nth-child(11):after{animation-delay: @signal_duration}
+			.box:nth-child(12):after{animation-delay: 0s}
+			.box:nth-child(13):after{animation-delay: 0s}
+			.box:nth-child(14):after{animation-delay: .3s}
+			.box:nth-child(15):after{animation-delay: 0s}
+			.box:nth-child(16):after{animation-delay: @signal_duration}
+
+
+		}
+		
+	}
+}
+
+
+@keyframes signal {
+	0% 		{ transform: translate3d(0%, 0%, 0px) ;opacity: 0 }
+	30% 		{  ;opacity: 1 }
+	60% 	{ transform: translate3d(0%, 1630%, 0px); opacity: 0; }
+	100% 	{ transform: translate3d(0%, 1630%, 0px); opacity: 0; }
+
+}
+
+
+@keyframes ladder
+{
+    0%
+    {
+        transform: translate3d(0%, 0%, 0px);
+    }
+    50%
+    {
+        transform: translate3d(1%, -3%, 0px);
+    }
+    // 80% { transform: translate3d(0%, 0%, 0px) }
+    100%
+    {
+        transform: translate3d(0%, 0%, 0px);
+    }
+}
+
+
+.fp-viewing-mac
+{
+    .illustration
+    {
+        .mac
+        {
+            .hand
+            {
+                animation-name: macHand;
+                animation-duration: @mac_duration;
+                // animation-direction: alternate;
+                animation-play-state: running;
+                animation-timing-function: ease-in-out;
+                // animation-delay: 2s;
+                animation-iteration-count: infinite;
+
+                animation-fill-mode: both;
+            }
+
+            .head
+            {
+                animation-name: macHead;
+                animation-duration: @mac_duration;
+                // animation-direction: alternate;
+                animation-play-state: running;
+                animation-timing-function: ease-in-out;
+                // animation-delay: 2s;
+                animation-iteration-count: infinite;
+
+                animation-fill-mode: both;
+            }
+        }
+    }
+}
+
+
+@keyframes macHand
+{
+    0%
+    {
+        transform: rotate(0deg);
+    }
+    16.5%
+    {
+        transform: rotate(-20deg);
+    }
+    25%
+    {
+        transform: rotate(0deg);
+    }
+    100%
+    {
+        transform: rotate(00deg);
+    }
+}
+
+@keyframes macHead
+{
+    0%
+    {
+        transform: rotate(0deg);
+    }
+    50%
+    {
+        transform: rotate(0deg);
+    }
+    62.5%
+    {
+        transform: rotate(-10deg);
+    }
+    75%
+    {
+        transform: rotate(0deg);
+    }
+    87.5%
+    {
+        transform: rotate(-10deg);
+    }
+    100%
+    {
+        transform: rotate(00deg);
+    }
+}
+
+
+.fp-viewing-office
+{
+    .illustration
+    {
+        .office
+        {
+            .wall_l
+            {
+                animation-name: wall_l;
+                animation-duration: @office_duration / 2;
+                // animation-direction: alternate;
+                animation-play-state: running;
+                animation-timing-function: ease-in-out;
+                animation-delay: 2s;
+                animation-iteration-count: 1;
+
+                animation-fill-mode: both;
+            }
+
+            .wall_r
+            {
+                animation-name: wall_r;
+                animation-duration: @office_duration / 2;
+                // animation-direction: alternate;
+                animation-play-state: running;
+                animation-timing-function: ease-in-out;
+                animation-delay: 2s;
+                animation-iteration-count: 1;
+
+                animation-fill-mode: both;
+            }
+
+            .sea
+            {
+
+            	display: block;
+                animation-name: sea;
+                animation-duration: @office_duration / 1.25;
+                // animation-direction: alternate;
+                animation-play-state: running;
+                animation-timing-function: cubic-bezier(.38, .05, .41, .99);
+                animation-delay: 2.5s;
+                animation-iteration-count: 1;
+
+                animation-fill-mode: both;
+            }
+
+            .pot
+            {
+
+            	display: block;
+                animation-name: pot;
+                animation-duration: @office_duration / 3;
+                // animation-direction: alternate;
+                animation-play-state: running;
+                animation-timing-function: cubic-bezier(0, 0, .19, .98);
+                animation-delay: 4s;
+                animation-iteration-count: 1;
+
+                animation-fill-mode: both;
+            }
+        }
+    }
+}
+
+
+
+@keyframes wall_l
+{
+    0%
+    {
+        transform: translate3d(0%, 0%, 0px);
+    }
+    100%
+    {
+        transform: translate3d(-100%, 36%, 0px);
+    }
+}
+
+@keyframes wall_r
+{
+    0%
+    {
+        transform: translate3d(0%, 0%, 0px);
+    }
+    100%
+    {
+        transform: translate3d(100%, 20%, 0px);
+    }
+}
+
+@keyframes sea
+{
+    0%
+    {
+        transform: translate3d(100%, -41%, 0px);
+    }
+    100%
+    {
+        transform: translate3d(0%, 0%, 0px);
+    }
+}
+
+@keyframes pot
+{
+    0%
+    {
+        transform: translate3d(0%, -210%, 0px);
+    }
+    100%
+    {
+        transform: translate3d(0%, 0%, 0px);
+    }
+}
+
+
+.fp-viewing-free
+{
+    .illustration
+    {
+        .free
+        {
+            .spring
+            {
+                animation-name: spring;
+                animation-duration: @free_duration;
+                // animation-direction: alternate;
+                animation-play-state: running;
+                animation-timing-function: cubic-bezier(0, .22, .16, 1.48);
+                animation-delay: 1s;
+                animation-iteration-count: infinite;
+
+                animation-fill-mode: both;
+            }
+
+            .board
+            {
+                animation-name: board;
+                animation-duration: @free_duration;
+                // animation-direction: alternate;
+                animation-play-state: running;
+                animation-timing-function: cubic-bezier(0, .22, .16, 1.48);
+                animation-delay: 1s;
+                animation-iteration-count: infinite;
+
+                animation-fill-mode: both;
+            }
+
+            .peop
+            {
+                animation-name: peop;
+                animation-duration: @free_duration;
+                // animation-direction: alternate;
+                animation-play-state: running;
+                animation-timing-function: cubic-bezier(.01, .38, .4, 1.27);
+                animation-delay: 1s;
+                animation-iteration-count: infinite;
+
+                animation-fill-mode: both;
+            }
+
+            .tie
+            {
+                animation-name: tie;
+                animation-duration: @free_duration;
+                // animation-direction: alternate;
+                animation-play-state: running;
+                animation-timing-function: cubic-bezier(.01, .36, 1, .66);
+                animation-delay: 1s;
+                animation-iteration-count: infinite;
+
+                animation-fill-mode: both;
+            }
+        }
+    }
+}
+
+
+@keyframes spring
+{
+    0%
+    {
+        transform: scale(1,1);
+    }
+    47%
+    {
+        transform: scale(1,.7);
+    }
+    50%
+    {
+        transform: scale(1,1);
+    }
+    100%
+    {
+        transform: scale(1,1);
+    }
+}
+
+@keyframes board
+{
+    0%
+    {
+        transform: translate3d(0%, 0%, 0px) scale(1,1);
+    }
+    47%
+    {
+        transform: translate3d(0%, 39%, 0px) scale(1,.9);
+    }
+    50%
+    {
+        transform: translate3d(0%, 0%, 0px) scale(1,1);
+    }
+    100%
+    {
+        transform: translate3d(0%, 0%, 0px) scale(1,1);
+    }
+}
+
+@keyframes peop
+{
+    0%
+    {
+        transform: translate3d(0%, 0%, 0px) rotate(0deg);
+    }
+    47%
+    {
+        transform: translate3d(0%, 16%, 0px) rotate(-5deg);
+    }
+    75%
+    {
+        transform: translate3d(0%, -30%, 0px) rotate(10deg);
+    }
+    95%
+    {
+        transform: translate3d(0%, 0%, 0px) rotate(0deg);
+    }
+    100%
+    {
+        transform: translate3d(0%, 0%, 0px) rotate(0deg);
+    }
+}
+
+@keyframes tie
+{
+    0%
+    {
+        transform: translate3d(0%, 0%, 0px) rotate(0deg);
+    }
+    47%
+    {
+        transform: translate3d(0%, 0%, 0px) rotate(10deg);
+    }
+    75%
+    {
+        transform: translate3d(0%, 0%, 0px) rotate(-20deg);
+    }
+    95%
+    {
+        transform: translate3d(0%, 0%, 0px) rotate(16deg);
+    }
+    100%
+    {
+        transform: translate3d(0%, 0%, 0px) rotate(0deg);
+    }
+}
+
+.fp-viewing-salaries
+{
+    .illustration
+    {
+        .salaries
+        {
+            .bowl_l,
+            .bowl_r
+            {
+                animation-duration: @salaries_duration;
+                // animation-direction: alternate;
+                animation-play-state: running;
+                animation-timing-function: cubic-bezier(.92,-.1, 1, 1.34);
+                animation-delay: 1s;
+                animation-iteration-count: 1;
+
+                animation-fill-mode: both;
+            }
+
+            .bowl_l
+            {
+                animation-name: bowl_l;
+            }
+            .bowl_r
+            {
+                animation-name: bowl_r;
+            }
+
+            .beam,
+            .pointer
+            {
+                animation-name: beam;
+                animation-duration: @salaries_duration;
+                // animation-direction: alternate;
+                animation-play-state: running;
+                animation-timing-function: cubic-bezier(.92,-.1, 1, 1.34);
+                animation-delay: 1s;
+                animation-iteration-count: 1;
+
+                animation-fill-mode: both;
+            }
+        }
+    }
+}
+
+
+@keyframes bowl_l
+{
+    0%
+    {
+        transform: translate3d(0%, 0%, 0px);
+    }
+    100%
+    {
+        transform: translate3d(0%, -13%, 0px);
+    }
+}
+
+@keyframes bowl_r
+{
+    0%
+    {
+        transform: translate3d(0%, 0%, 0px);
+    }
+    100%
+    {
+        transform: translate3d(0%, 13%, 0px);
+    }
+}
+
+@keyframes beam
+{
+    0%
+    {
+        transform: rotate(0deg);
+    }
+    100%
+    {
+        transform: rotate(14deg);
+    }
+}
